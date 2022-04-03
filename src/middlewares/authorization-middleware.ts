@@ -1,9 +1,15 @@
 import { Request, Response, NextFunction } from "express";
 import { authenticationService } from "@/services";
+import { UnauthorizedError } from "@/errors";
 
 export const validateAuthorization = () => {
   return async (req: Request, res: Response, next: NextFunction) => {
-    const [, token] = req.headers.authorization.split(" ");
+    const authorization = req.headers.authorization;
+
+    if (!authorization)
+      throw new UnauthorizedError("Authorization header is missing");
+
+    const [, token] = authorization.split(" ");
 
     if (token) {
       try {
@@ -17,10 +23,10 @@ export const validateAuthorization = () => {
 
         next();
       } catch (error) {
-        res.status(401).json({ message: "Invalid Token" });
+        throw new UnauthorizedError("Invalid Token");
       }
     } else {
-      res.status(401).json({ message: "No Token Provided" });
+      throw new UnauthorizedError("No Token Provided");
     }
   };
 };
