@@ -7,12 +7,13 @@
     "experimentalDecorators": true,
     "esModuleInterop": true,
     "rootDirs": ["src"],
+    "typeRoots": ["./types", "./node_modules/@types"],
     "baseUrl": "src",
     "paths": {
       "@/*": ["*"]
     },
     "plugins": [{ "transform": "typescript-transform-paths" }]
   },
-  "include": ["src"],
+  "include": ["src", "types"],
   "exclude": []
 }
