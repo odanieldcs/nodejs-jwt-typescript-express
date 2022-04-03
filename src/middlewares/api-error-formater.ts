@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import httpStatus from "http-status";
-import { NotFoundError, UnauthorizedError } from "@/errors";
+import { BadRequestError, NotFoundError, UnauthorizedError } from "@/errors";
 
 export const apiFormatError = (
   error: Error,
@@ -9,10 +9,10 @@ export const apiFormatError = (
   next: NextFunction
 ) => {
   let status = httpStatus.INTERNAL_SERVER_ERROR;
-  let shouldLog = false;
 
   if (error instanceof NotFoundError) status = httpStatus.NOT_FOUND;
   if (error instanceof UnauthorizedError) status = httpStatus.UNAUTHORIZED;
+  if (error instanceof BadRequestError) status = httpStatus.UNAUTHORIZED;
   else {
     console.log(error);
     error = new Error("Internal Server Error");
