@@ -1,4 +1,5 @@
 import { authenticationService } from "@/services";
+import { UnauthorizedError } from "@/errors";
 
 class AuthController {
   login(username, password) {
@@ -12,7 +13,7 @@ class AuthController {
 
       return { message: "Login Successful", token };
     } else {
-      return { message: "Login Failed" };
+      throw new UnauthorizedError("Login Failed");
     }
   }
 }
