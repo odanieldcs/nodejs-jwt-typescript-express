@@ -6,14 +6,14 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "esModuleInterop": true,
-    "rootDirs": ["src"],
+    "rootDirs": ["./src"],
     "typeRoots": ["./types", "./node_modules/@types"],
-    "baseUrl": "src",
+    "baseUrl": "./src",
     "paths": {
       "@/*": ["*"]
     },
     "plugins": [{ "transform": "typescript-transform-paths" }]
   },
-  "include": ["src", "types"],
+  "include": ["./src", "./types"],
   "exclude": []
 }
