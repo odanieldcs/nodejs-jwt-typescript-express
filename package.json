@@ -11,7 +11,8 @@
     "dev": "NODE_ENV=development nodemon --watch 'src/' --exec 'ts-node -r tsconfig-paths/register ./src/server.ts' -e ts",
     "start": "NODE_ENV=production node ./dist/app.js",
     "build": "rm -rf ./dist && ttsc -p tsconfig-build.json",
-    "test": "jest -i"
+    "test": "jest -i",
+    "test:coverage": "jest --passWithNoTests --noStackTrace --runInBand --coverage"
   },
   "keywords": [],
   "author": "Daniel Castro <daniel@danieldcs.com> (https://danieldcs.com)",
