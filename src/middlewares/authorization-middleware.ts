@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import { authenticationService } from "@/services";
-import { UnauthorizedError } from "@/errors";
+import { UnauthorizedError, BadRequestError } from "@/errors";
 
 export const validateAuthorization = () => {
   return async (req: Request, res: Response, next: NextFunction) => {
@@ -26,7 +26,7 @@ export const validateAuthorization = () => {
         throw new UnauthorizedError("Invalid Token");
       }
     } else {
-      throw new UnauthorizedError("No Token Provided");
+      throw new BadRequestError("No Token Provided");
     }
   };
 };
