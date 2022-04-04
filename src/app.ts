@@ -1,12 +1,22 @@
 import "express-async-errors";
 import express, { Express } from "express";
 import routes from "@/routers";
+import { apiFormatError } from "@/middlewares";
 
-const app: Express = express();
+export class App {
+  readonly app: Express = express();
 
-app.use(express.json());
-app.use(routes);
+  async init(): Promise<Express> {
+    this.app.use(express.json());
+    this.app.use(routes);
+    this.app.use(apiFormatError);
 
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
-});
+    return this.app;
+  }
+
+  listen(port: number, callback: () => void): void {
+    this.app.listen(port, callback);
+  }
+}
+
+export const app = new App();

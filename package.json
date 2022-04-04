@@ -2,13 +2,13 @@
   "name": "nodejs-jwt-typescript-express",
   "version": "1.0.0",
   "description": "A tutorial from middleware for authentication using Express and TypeScript",
-  "main": "src/index.js",
+  "main": "src/server.js",
   "engines": {
     "node": ">=16.13.1",
     "npm": ">=8.1.2"
   },
   "scripts": {
-    "dev": "NODE_ENV=development nodemon --watch 'src/' --exec 'ts-node -r tsconfig-paths/register ./src/app.ts' -e ts",
+    "dev": "NODE_ENV=development nodemon --watch 'src/' --exec 'ts-node -r tsconfig-paths/register ./src/server.ts' -e ts",
     "start": "NODE_ENV=production node ./dist/app.js",
     "build": "rm -rf ./dist && ttsc -p tsconfig-build.json",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -18,9 +18,12 @@
   "license": "MIT",
   "devDependencies": {
     "@types/express": "^4.17.13",
+    "@types/jest": "^27.4.1",
     "@types/jsonwebtoken": "^8.5.8",
     "@types/node": "^17.0.23",
+    "jest": "^27.5.1",
     "nodemon": "^2.0.15",
+    "supertest": "^6.2.2",
     "ts-node": "^10.7.0",
     "tsconfig-paths": "^3.14.1",
     "ttypescript": "^1.5.13",
