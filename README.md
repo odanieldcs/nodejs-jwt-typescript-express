@@ -1,5 +1,7 @@
 # API NodeJS (Auth)
 
+[![Coverage Status](https://coveralls.io/repos/github/odanieldcs/nodejs-jwt-typescript-express/badge.svg?branch=main)](https://coveralls.io/github/odanieldcs/nodejs-jwt-typescript-express?branch=main)
+
 The API NodeJS with mock user for authentication using TypeScript, JWT, Express and Middlewares for validation.
 
 # Installation
