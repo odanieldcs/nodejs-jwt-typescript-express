@@ -27,6 +27,15 @@ describe("Server tests", () => {
       expect(res.status).toBe(httpStatus.UNAUTHORIZED);
     });
 
+    it(`should respond with status ${httpStatus.BAD_REQUEST} when token auth is empty`, async () => {
+      const res = await server
+        .get("/customers")
+        .set("Authorization", "Bearer ")
+        .send();
+
+      expect(res.status).toBe(httpStatus.BAD_REQUEST);
+    });
+
     it(`should respond with status ${httpStatus.OK} with token auth valid`, async () => {
       const payload = {
         id: 1,
