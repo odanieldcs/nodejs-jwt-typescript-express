@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import httpStatus from "http-status";
-import { BadRequestError, NotFoundError, UnauthorizedError } from "@/errors";
+import { BadRequestError, UnauthorizedError } from "@/errors";
 
 export const apiFormatError = (
   error: Error,
@@ -11,8 +11,7 @@ export const apiFormatError = (
   let status = httpStatus.INTERNAL_SERVER_ERROR;
   let shouldLog = false;
 
-  if (error instanceof NotFoundError) status = httpStatus.NOT_FOUND;
-  else if (error instanceof UnauthorizedError) status = httpStatus.UNAUTHORIZED;
+  if (error instanceof UnauthorizedError) status = httpStatus.UNAUTHORIZED;
   else if (error instanceof BadRequestError) status = httpStatus.BAD_REQUEST;
   else shouldLog = true;
 
