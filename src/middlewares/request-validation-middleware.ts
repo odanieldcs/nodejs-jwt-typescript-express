@@ -24,11 +24,3 @@ function validate(
 export function validateBody(schema: ObjectSchema): ValidationMiddleware {
   return validate(schema, "body");
 }
-
-export function validateParams(schema: ObjectSchema): ValidationMiddleware {
-  return validate(schema, "params");
-}
-
-export function validateQuery(schema: ObjectSchema): ValidationMiddleware {
-  return validate(schema, "query");
-}
